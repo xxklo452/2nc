@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=3 uid="uid://bypfh5lol3spr"]
+
+[ext_resource type="Script" path="res://MapManager.gd" id="1_4jpc8"]
+[ext_resource type="Script" path="res://world.gd" id="1_pblrd"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_vemfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fw2s"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.442911, 0.442911, 0.442911, 0.572549)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_7cqci"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_4fw2s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltvly"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.458405, 0.458405, 0.458405, 0.545098)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_x1qt2"]
+Panel/styles/panel = SubResource("StyleBoxFlat_ltvly")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mk6v"]
+font_size = 20
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_pblrd")
+
+[node name="Camera" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Camera"]
+position = Vector2(960, 540)
+
+[node name="world" type="Node2D" parent="."]
+script = ExtResource("1_4jpc8")
+
+[node name="terrain" type="MultiMeshInstance2D" parent="world"]
+
+[node name="counties" type="MultiMeshInstance2D" parent="world"]
+multimesh = SubResource("MultiMesh_vemfw")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 90.0
+offset_bottom = 90.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ui"]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="ui/CanvasLayer"]
+modulate = Color(0.959094, 0.989878, 0.943866, 1)
+light_mask = 0
+offset_right = 76.0
+offset_bottom = 54.0
+theme = SubResource("Theme_7cqci")
+
+[node name="HBoxContainer" type="HSplitContainer" parent="ui/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui/CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="ui/CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+current_tab = 0
+tabs_rearrange_group = 0
+
+[node name="1" type="Label" parent="ui/CanvasLayer/PanelContainer/HBoxContainer/TabContainer"]
+layout_mode = 2
+text = "1*"
+metadata/_tab_index = 0
+
+[node name="2" type="Label" parent="ui/CanvasLayer/PanelContainer/HBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+text = "2*"
+metadata/_tab_index = 1
+
+[node name="unstart" type="Control" parent="ui"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="choice" type="Control" parent="ui/unstart"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ui/unstart/choice"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 74.0
+offset_bottom = 23.0
+text = "从这开始"
+
+[node name="ColorRect" type="ColorRect" parent="ui/unstart/choice"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.687215, 0.687215, 0.687215, 0.576471)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ui/unstart/choice"]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 84.0
+offset_bottom = 62.0
+
+[node name="Button" type="Button" parent="ui/unstart/choice/VBoxContainer"]
+layout_mode = 2
+text = "确定"
+
+[node name="Button2" type="Button" parent="ui/unstart/choice/VBoxContainer"]
+layout_mode = 2
+text = "取消"
+
+[node name="WilStart" type="Control" parent="ui/unstart"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="ui/unstart/WilStart"]
+layout_mode = 0
+offset_right = 151.0
+offset_bottom = 102.0
+theme = SubResource("Theme_x1qt2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/unstart/WilStart/Panel"]
+layout_mode = 0
+offset_right = 151.0
+offset_bottom = 102.0
+
+[node name="Control" type="HBoxContainer" parent="ui/unstart/WilStart/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui/unstart/WilStart/Panel/VBoxContainer/Control"]
+layout_mode = 2
+text = "国家名字"
+label_settings = SubResource("LabelSettings_7mk6v")
+
+[node name="Panel" type="Panel" parent="ui/unstart/WilStart/Panel/VBoxContainer/Control"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="ui/unstart/WilStart/Panel/VBoxContainer/Control/Panel"]
+layout_mode = 2
+offset_right = 58.0
+offset_bottom = 28.0
+
+[node name="Button" type="Button" parent="ui/unstart/WilStart/Panel/VBoxContainer"]
+layout_mode = 2
+text = "确定"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="pressed" from="ui/unstart/choice/VBoxContainer/Button" to="." method="_on_start_ok_pressed"]
+[connection signal="pressed" from="ui/unstart/choice/VBoxContainer/Button2" to="." method="_on_unstart_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

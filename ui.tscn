@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://vn4ojl0c0p8c"]
+
+[node name="ui" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 244.0
+offset_top = 164.0
+offset_right = 334.0
+offset_bottom = 254.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="unstart" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="unstart"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 74.0
+offset_bottom = 23.0
+text = "从这开始"
+
+[node name="ColorRect" type="ColorRect" parent="unstart"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 90.0
+color = Color(0.687215, 0.687215, 0.687215, 0.576471)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="unstart"]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 84.0
+offset_bottom = 62.0
+
+[node name="Button" type="Button" parent="unstart/VBoxContainer"]
+layout_mode = 2
+text = "确定"
+
+[node name="Button2" type="Button" parent="unstart/VBoxContainer"]
+layout_mode = 2
+text = "取消"

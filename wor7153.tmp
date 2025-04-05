@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bypfh5lol3spr"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_xub82"]
+[ext_resource type="Script" path="res://camera.gd" id="3_bih1q"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_xub82")
+
+[node name="terrain" type="Node2D" parent="."]
+
+[node name="Camera" type="Node2D" parent="."]
+script = ExtResource("3_bih1q")
+
+[node name="Camera2D" type="Camera2D" parent="Camera"]
+position = Vector2(576, 324)
